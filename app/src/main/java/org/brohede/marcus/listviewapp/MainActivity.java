@@ -2,6 +2,7 @@ package org.brohede.marcus.listviewapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Toolbar;
 
 import java.util.ArrayList;
@@ -24,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
 
         // Skapa ett List-objekt med din array som in-data
         List<String> listData =new ArrayList<String>(Arrays.asList(rawData));
+
+        //skapa en ArrayAdapter som kopplar samman
+        // list_item_textview, my_item_textview, och listan med rådata
+        ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(),R.layout.list_item_textview,R.id.my_item_textview,listData);
+
+
 
         // The onCreate method is run when the app is created.
         // Before you can implement this you need to create the layout xml files that
