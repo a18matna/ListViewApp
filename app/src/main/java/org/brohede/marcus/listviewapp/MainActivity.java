@@ -2,7 +2,12 @@ package org.brohede.marcus.listviewapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import java.util.ArrayList;
@@ -24,14 +29,29 @@ public class MainActivity extends AppCompatActivity {
         String[]  rawData = {"Leif", "Ulla", "Kjell"};
 
         // Skapa ett List-objekt med din array som in-data
-        List<String> listData =new ArrayList<String>(Arrays.asList(rawData));
+        List<String> listData =new ArrayList<String>(Arrays.asList(mountainNames));
 
         //skapa en ArrayAdapter som kopplar samman
         // list_item_textview, my_item_textview, och listan med rådata
         ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(),R.layout.list_item_textview,R.id.my_item_textview,listData);
 
+        //Koppla samman ListView med ArrayAdapter
+        ListView myListView = (ListView)findViewById(R.id.my_listview);
+        myListView.setAdapter(adapter);
+
+        // se att vi kan lägga till element i adaptern
+        // som automatiskt blir uppdaterat i ListView:n
+        adapter.add("tillagd med adapter.add");
 
 
+
+        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+
+                Toast.makeText(getApplicationContext(), "height: "+mountainHeights[position], Toast.LENGTH_LONG).show();
+            }
+        });
         // The onCreate method is run when the app is created.
         // Before you can implement this you need to create the layout xml files that
         // will hold/show your data created here. You need three create things:
