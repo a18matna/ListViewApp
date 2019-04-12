@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     //skapa en array
-        String[]  rawData = {"Leif", "Ulla", "Kjell"};
+
 
         // Skapa ett List-objekt med din array som in-data
         List<String> listData =new ArrayList<String>(Arrays.asList(mountainNames));
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
 
-                Toast.makeText(getApplicationContext(), "height: "+mountainHeights[position], Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "height: "+mountainHeights[position] + " Location: " +mountainLocations[position], Toast.LENGTH_LONG).show();
             }
         });
         // The onCreate method is run when the app is created.
